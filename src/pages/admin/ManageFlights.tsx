@@ -15,7 +15,7 @@ const ManageFlights: React.FC = () => {
   const fetchFlights = async () => {
     try {
       const response = await fetch(
-        "https://api.aviationstack.com/v1/flights?access_key=YOUR_API_KEY"
+        "https://api.aviationstack.com/v1/flights?access_key=c77da35a43c98b68bbdabed11e725839"
       );
       const result = await response.json();
       const formattedFlights: FlightData[] = result?.data
