@@ -1,4 +1,4 @@
-const AdminHeader = ({ onMenuClick }) => {
+const AdminHeader = ({ onMenuClick }: { onMenuClick: () => void }) => {
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
     window.location.href = "/auth";
