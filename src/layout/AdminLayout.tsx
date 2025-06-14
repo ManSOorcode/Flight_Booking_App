@@ -1,14 +1,18 @@
-import { Outlet } from "react-router";
-
+import { Outlet, useLocation, useNavigate } from "react-router";
 import AdminHeader from "../components/admin/navigation/AdminHeader";
 import AdminSidebar from "../components/admin/navigation/AdminSidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AdminLayout = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/admin") navigate("/admin/dashboard");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
-    <div className="flex h-screen overflow-hidden">
-      {/* Sidebar */}
+    <div className="flex h-screen ">
       <AdminSidebar
         isOpen={isSidebarOpen}
         onClose={() => setSidebarOpen(false)}
@@ -16,15 +20,14 @@ const AdminLayout = () => {
 
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-40 md:hidden"
+          className="fixed inset-0 bg-black/50 z-40 md:hidden backdrop-blur-sm"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
-      {/* Main content */}
       <div className="flex-1 flex flex-col">
         <AdminHeader onMenuClick={() => setSidebarOpen(true)} />
-        <main className="flex-1 overflow-y-auto bg-gray-100 p-4">
+        <main className="container bg-gray-50 p-6 overflow-y-scroll">
           <Outlet />
         </main>
       </div>

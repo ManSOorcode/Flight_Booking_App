@@ -8,6 +8,23 @@ export interface FlightData {
   price: number;
   seatsAvailable: number;
   seatsBooked: number;
+  departure_airport: {
+    name: string;
+    id: string;
+    time: string;
+  };
+  arrival_airport: {
+    name: string;
+    id: string;
+    time: string;
+  };
+  duration: number;
+  airplane: string;
+  airline_logo: string;
+  flight_number: string;
+  travel_class: string;
+  legroom: string;
+  extensions: string[];
 }
 
 export interface RawFlightData {

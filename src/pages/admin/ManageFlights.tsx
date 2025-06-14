@@ -1,43 +1,35 @@
-// ManageFlights.tsx
 import React, { useEffect, useState } from "react";
 import FlightForm from "../admin/FlightForm";
 import FlightTable from "../admin/FlightTable";
-import type { FlightData, RawFlightData } from "../../types/flightTypes";
+import type { FlightData } from "../../types/flightTypes";
 
 const ManageFlights: React.FC = () => {
   const [flights, setFlights] = useState<FlightData[]>([]);
   const [editingFlight, setEditingFlight] = useState<FlightData | null>(null);
 
   useEffect(() => {
-    fetchFlights();
+    loadFlights();
   }, []);
 
-  const fetchFlights = async () => {
+  const loadFlights = async () => {
     try {
-      const response = await fetch(
-        "https://api.aviationstack.com/v1/flights?access_key=c77da35a43c98b68bbdabed11e725839"
-      );
-      const result = await response.json();
-      const formattedFlights: FlightData[] = result?.data
-        ?.slice(0, 10)
-        ?.map((f: RawFlightData) => ({
-          id: `${f.flight.iata}-${f.flight_date}`,
-          from: f.departure.iata || "N/A",
-          to: f.arrival.iata || "N/A",
-          departure: f.departure.scheduled || new Date().toISOString(),
-          arrival: f.arrival.scheduled || new Date().toISOString(),
-          airline: f.airline.name || "Unknown",
-          price: Math.floor(Math.random() * 4000 + 1500),
-          seatsAvailable: 50,
-          seatsBooked: Math.floor(Math.random() * 20),
-        }));
+      const storedFlights = localStorage.getItem("flights");
 
-      setFlights(formattedFlights);
-      localStorage.setItem("flights", JSON.stringify(formattedFlights));
+      if (storedFlights) {
+        const parsedFlights: FlightData[] = JSON.parse(storedFlights);
+        setFlights(parsedFlights);
+      } else {
+        const response = await fetch("../../../public/mock_flights.json");
+        const result: FlightData[] = await response.json();
+        setFlights(result);
+        localStorage.setItem("flights", JSON.stringify(result));
+      }
     } catch (error) {
-      console.error("Failed to fetch flights:", error);
+      console.error("Failed to load flights:", error);
     }
   };
+
+  console.log(flights);
 
   const saveFlights = (updated: FlightData[]) => {
     setFlights(updated);
@@ -45,7 +37,9 @@ const ManageFlights: React.FC = () => {
   };
 
   const handleAddFlight = (flight: FlightData) => {
+    console.log(flight);
     const updated = [...flights, flight];
+
     saveFlights(updated);
   };
 
@@ -63,11 +57,17 @@ const ManageFlights: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold">Manage Flights</h2>
+    <div className="min-h-screen bg-gray-50 pt-4 md:pt-6">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          Manage Flights
+        </h1>
+        <p className="text-gray-600">View and creat new flight</p>
+      </div>
       <FlightForm
         onSubmit={editingFlight ? handleUpdateFlight : handleAddFlight}
-        initialData={editingFlight}
+        initialData={editingFlight || {}}
+        isUpdate={editingFlight ? true : false}
         setEditingFlight={setEditingFlight}
       />
       <FlightTable

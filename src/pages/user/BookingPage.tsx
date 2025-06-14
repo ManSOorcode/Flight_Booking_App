@@ -90,6 +90,7 @@ const BookingPage: React.FC = () => {
           age: Number(values.age),
         },
       ],
+      status: "confirm",
       totalAmount: selectedFlight?.price,
       bookingDate: new Date().toISOString(),
     };
