@@ -1,19 +1,25 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import ParentAuth from "../pages/auth/ParentAuth";
+
 import Login from "../pages/auth/Login";
 import Signup from "../pages/auth/Signup";
-// import Layout from "../layout/Layout";
-import Ticket from "../pages/Ticket";
+
 import UserLayout from "../layout/UserLayout";
 import AdminLayout from "../layout/AdminLayout";
 import PrivateRoute from "./PrivateRoute";
 import ManageFlights from "../pages/admin/ManageFlights";
+import BookingList from "../pages/admin/BookingList";
+import AdminDashboard from "../pages/admin/AdminDashboard";
+import UserHomePage from "../pages/user/UserHomePage";
+import UserBookings from "../pages/user/UserBookings";
+import BookingPage from "../pages/user/BookingPage";
+import UserProfile from "../pages/user/UserProfile";
+
+import AuthLayout from "../pages/auth/AuthLayout";
 
 const routes = createBrowserRouter([
-  // part one: auth
   {
     path: "/auth",
-    element: <ParentAuth />,
+    element: <AuthLayout />,
     children: [
       {
         path: "",
@@ -26,9 +32,7 @@ const routes = createBrowserRouter([
     ],
   },
 
-  //  Part two: UI part
   {
-    // user
     path: "/",
     element: <PrivateRoute />,
     children: [
@@ -37,21 +41,28 @@ const routes = createBrowserRouter([
         element: <UserLayout />,
         children: [
           {
-            path: "ticket",
-            element: <Ticket />,
+            path: "",
+            element: <UserHomePage />,
           },
+          {
+            path: "my-bookings",
+            element: <UserBookings />,
+          },
+          {
+            path: "booking",
+            element: <BookingPage />,
+          },
+
+          { path: "profile", element: <UserProfile /> },
         ],
       },
       {
         path: "/admin",
         element: <AdminLayout />,
         children: [
-          // admin
-
-          // { path: "dashboard", element: <AdminDashboard /> },
+          { path: "dashboard", element: <AdminDashboard /> },
           { path: "flights", element: <ManageFlights /> },
-
-          // { path: "bookings", element: <AllBookings /> },
+          { path: "bookings", element: <BookingList /> },
         ],
       },
     ],

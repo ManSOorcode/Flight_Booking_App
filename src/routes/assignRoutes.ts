@@ -4,9 +4,9 @@ interface AssignRoutes {
 }
 
 export const assignRouteBaseOnRole: AssignRoutes = {
-  user: ["/ticket"],
+  user: ["/user", "/my-bookings", "/payment", "/profile"],
 
-  admin: ["/users", "ticket", "/booking", "/admin/flights", "/admin"],
+  admin: ["/booking", "/flights", "/admin", "/dashboard"],
 };
 
 export const baseRoute = {
