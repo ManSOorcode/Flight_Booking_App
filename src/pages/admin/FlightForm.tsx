@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import CityAutoComplete from "../../components/usercomponents/CityAutoComplete";
+import CityAutoComplete from "../../utils/CityAutoComplete";
 
 interface Props {
   onSubmit: (flight: FlightData) => void;

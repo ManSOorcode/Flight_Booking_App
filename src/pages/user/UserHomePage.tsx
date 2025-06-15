@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
 
-import CityAutoComplete from "../../components/usercomponents/CityAutoComplete";
+import CityAutoComplete from "../../utils/CityAutoComplete";
 
 import { useFlightContext } from "../../context/useFlightContext";
 import {
