@@ -1,54 +1,108 @@
-# React + TypeScript + Vite
+# ✈️ FlyMate – Flight Booking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern full-stack flight booking web application built using **React (Vite)** for frontend, **TailwindCSS** for styling, and **LocalStorage** for persistent booking/session data. This project simulates a booking system with features for both **users** and **admins**, including flight search, booking, payment simulation, session management, and more.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+### 👤 User Panel
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🔍 Search flights with source, destination, date, and filters
+- 📄 View detailed flight information and booking UI
+- 🧾 Fill in passenger details and simulate payment
+- ✅ Booking confirmation modal with delay and redirect
+- 📑 View all your bookings on the "My Bookings" page
+- ⏳ Auto logout after 5 minutes of inactivity
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 🛠️ Admin Panel
+
+- ➕ Add new flights to the system
+- 📋 View list of bookings made by users
+- 🧮 Flight and booking management using LocalStorage
+
+---
+
+## 🧰 Tech Stack
+
+| Technology                 | Use Case                                           |
+| -------------------------- | -------------------------------------------------- |
+| React (Vite)               | Frontend framework                                 |
+| TailwindCSS                | Styling                                            |
+| React Router               | Page routing                                       |
+| Formik + Yup               | Form validation                                    |
+| LocalStorage               | Data persistence                                   |
+| UUID                       | Unique booking IDs                                 |
+| Custom Hooks + Context API | State sharing (e.g. selected flight, user session) |
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+│
+├── components/         # Shared components (modals, table, etc.)
+├── context/            # Context API for selected flight and auth
+├── layout/             # User and Admin layout components
+├── pages/              # Page views (Home, Booking, Payment, etc.)
+├── types/              # TypeScript type definitions
+├── utils/              # Helper functions
+└── App.tsx             # Routing logic
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧪 How to Run Locally
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+# 1. Clone the repo
+git clone https://github.com/ManSOorcode/Flight_Booking_App.git
+cd flymate-booking-app
+
+# 2. Install dependencies
+npm install
+
+# 3. Start development server
+npm run dev
 ```
+
+> Visit `http://localhost:5173` to use the app.
+
+---
+
+## 📝 Notes
+
+- Admin can add flights via the Admin Panel UI.
+- All flight and booking data is stored in `localStorage`, so a browser refresh does not lose state.
+- Payment gateway is simulated (no real API calls).
+- Session timeout will auto-logout the user after 5 minutes of inactivity.
+
+---
+
+## 📸 Screenshots
+
+You can add screenshots of:
+
+- User Home Page
+- Booking Page UI
+- Payment Modal
+- Admin Dashboard
+- My Bookings Page
+
+---
+
+## 📌 Future Enhancements (Ideas)
+
+- Add IndexedDB support for more complex data persistence
+- Implement real payment integration (e.g. Stripe)
+- Enable authentication with JWT
+- Add filters for flights (price, airline, layovers)
+- Backend support using Express + MongoDB
+
+---
+
+## 👨‍💻 Author
+
+> **[Mansoor Khan]** – Frontend Developer  
+> [GitHub](https://github.com/ManSOorcode) | [LinkedIn](https://www.linkedin.com/in/mansoor-khan-890311116)
