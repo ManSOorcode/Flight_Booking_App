@@ -39,6 +39,7 @@ const FlightTable: React.FC<Props> = ({ flights, onEdit, onDelete }) => {
   };
 
   return (
+    //  max-w-screen
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 max-w-screen">
       <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
         <div className="flex items-center gap-2">
@@ -52,10 +53,10 @@ const FlightTable: React.FC<Props> = ({ flights, onEdit, onDelete }) => {
         </div>
       </div>
 
-      <div className="overflow-auto ">
-        <table className=" min-w-full ">
+      <div className=" overflow-x-auto w-full">
+        <table className=" min-w-[1000px] w-full">
           <thead className="bg-gray-50 border-b border-gray-200">
-            <tr className="w-full">
+            <tr className="">
               <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Route
               </th>
@@ -77,7 +78,7 @@ const FlightTable: React.FC<Props> = ({ flights, onEdit, onDelete }) => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {flights?.map((flight) => {
+            {flights?.reverse().map((flight) => {
               const departure = formatDateTime(flight.departure);
               const arrival = formatDateTime(flight.arrival);
               const occupancyPercentage = Math.round(

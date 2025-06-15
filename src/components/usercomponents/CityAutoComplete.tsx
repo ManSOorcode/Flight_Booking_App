@@ -45,12 +45,12 @@ const CityAutoComplete: React.FC<CityAutoCompleteProps> = ({
   icon: Icon,
 }) => {
   const [airports, setAirports] = useState<Airport[]>([]);
-  const [query, setQuery] = useState(value || "");
+  // const [query, setQuery] = useState(value || "");
   const [suggestions, setSuggestions] = useState<Airport[]>([]);
 
-  useEffect(() => {
-    setQuery(value || "");
-  }, [value]);
+  // useEffect(() => {
+  //   setQuery(value || "");
+  // }, [value]);
 
   const getflight = async () => {
     try {
@@ -73,7 +73,7 @@ const CityAutoComplete: React.FC<CityAutoCompleteProps> = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value;
     console.log(input, "from on change");
-    setQuery(input);
+    // setQuery(input);
 
     console.log(name, input, "hello");
     const syntheticEvent: SyntheticEvent = {
@@ -98,7 +98,7 @@ const CityAutoComplete: React.FC<CityAutoCompleteProps> = ({
 
   const handleSelect = (airport: Airport) => {
     const fullText = `${airport.city} (${airport.iata})`;
-    setQuery(fullText);
+    // setQuery(fullText);
     setSuggestions([]);
 
     const syntheticEvent: SyntheticEvent = {
@@ -117,14 +117,14 @@ const CityAutoComplete: React.FC<CityAutoCompleteProps> = ({
   return (
     <div className="relative">
       <label className={labelStyle}>
-        {Icon && <Icon className="w-4 h-4" />}
+        {Icon && <Icon className="w-4 h-4 inline mr-2" />}
         {label}
       </label>
 
       <input
         name={name}
         type="text"
-        value={query}
+        value={value}
         onChange={handleChange}
         placeholder={`Enter ${label}`}
         className={inputStyle}

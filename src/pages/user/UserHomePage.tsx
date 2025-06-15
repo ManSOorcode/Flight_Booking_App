@@ -348,7 +348,7 @@ const UserHomePage: React.FC = () => {
                       <div className="flex items-center space-x-2 w-full">
                         <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                         <div className="flex-1 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 relative">
-                          <ArrowRightLeftIcon className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-orange-500 bg-white p-1 rounded-full shadow-sm" />
+                          <ArrowRightLeftIcon className=" w-12 h-12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-orange-500 bg-white p-1 rounded-full shadow-sm" />
                         </div>
                         <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                       </div>

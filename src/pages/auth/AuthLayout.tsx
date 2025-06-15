@@ -5,13 +5,7 @@ import { ArrowLeftIcon, PlaneIcon } from "../../assets/icons/Icons";
 
 const AuthLayout = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-indigo-200/20 rounded-full blur-2xl animate-pulse delay-500"></div>
-      </div>
-
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden ">
       <header className="relative z-10 p-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -33,7 +27,7 @@ const AuthLayout = () => {
         </div>
       </header>
 
-      <main className="relative z-10 px-4 pb-8">
+      <main className="relative z-10 px-4 ">
         <div className="max-w-6xl mx-auto">
           <Outlet />
         </div>

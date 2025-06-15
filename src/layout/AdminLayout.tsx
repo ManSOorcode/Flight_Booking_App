@@ -12,23 +12,23 @@ const AdminLayout = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="flex h-screen ">
+    <div className="flex h-screen w-full">
       <AdminSidebar
         isOpen={isSidebarOpen}
         onClose={() => setSidebarOpen(false)}
       />
-
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 md:hidden backdrop-blur-sm"
           onClick={() => setSidebarOpen(false)}
         />
       )}
-
-      <div className="flex-1 flex flex-col">
+      <div className="flex flex-col flex-1 overflow-hidden">
         <AdminHeader onMenuClick={() => setSidebarOpen(true)} />
-        <main className="container bg-gray-50 p-6 overflow-y-scroll">
-          <Outlet />
+        <main className="bg-gray-50 p-6 overflow-y-auto h-full">
+          <div className="container mx-auto">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>

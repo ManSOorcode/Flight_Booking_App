@@ -45,35 +45,7 @@ import {
   XIcon,
 } from "../../assets/icons/Icons";
 import { toast } from "react-toastify";
-
-interface FlightData {
-  id: string;
-  from: string;
-  to: string;
-  departure: string;
-  arrival: string;
-  airline: string;
-  price: number;
-  seatsAvailable: number;
-  seatsBooked: number;
-  departure_airport: {
-    name: string;
-    id: string;
-    time: string;
-  };
-  arrival_airport: {
-    name: string;
-    id: string;
-    time: string;
-  };
-  duration: number;
-  airplane: string;
-  airline_logo: string;
-  flight_number: string;
-  travel_class: string;
-  legroom: string;
-  extensions: string[];
-}
+import type { FlightData } from "../../types/flightTypes";
 
 interface Props {
   onSubmit: (flight: FlightData) => void;
@@ -251,16 +223,14 @@ const FlightForm: React.FC<Props> = ({
         };
 
         onSubmit(flight);
-
-        toast.success(
-          isUpdate
-            ? "Flight updated successfully!"
-            : "Flight created successfully!"
-        );
-
-        if (!isUpdate) {
-          formik.resetForm();
+        console.log("flight created");
+        if (isUpdate) {
+          toast.success("Flight updated successfully!");
+        } else {
+          toast.success("Flight updated successfully!");
         }
+
+        formik.resetForm();
       } catch (error) {
         if (error instanceof Error) {
           toast.error(error.message);
@@ -326,7 +296,7 @@ const FlightForm: React.FC<Props> = ({
                 }
                 label="From Airport"
                 labelStyle={
-                  "flex items-center gap-2 text-sm font-medium text-gray-700"
+                  "flex items-center gap-2 text-sm font-medium text-gray-700 mb-2"
                 }
                 icon={MapPinIcon}
               />
@@ -348,7 +318,7 @@ const FlightForm: React.FC<Props> = ({
                 }
                 label="To Airport"
                 labelStyle={
-                  "flex items-center gap-2 text-sm font-medium text-gray-700"
+                  "flex items-center gap-2 text-sm font-medium text-gray-700 mb-2"
                 }
                 icon={MapPinIcon}
               />
@@ -708,7 +678,7 @@ const FlightForm: React.FC<Props> = ({
         <div className="flex items-center gap-4 pt-6 border-t border-gray-200">
           <button
             type="submit"
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="flex items-center cursor-pointer gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             {isUpdate ? (
               <SettingsIcon className="w-4 h-4" />
@@ -722,7 +692,7 @@ const FlightForm: React.FC<Props> = ({
             <button
               type="button"
               onClick={() => setEditingFlight(null)}
-              className="flex items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+              className="flex cursor-pointer items-center gap-2 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
             >
               <XIcon className="w-4 h-4" />
               Cancel

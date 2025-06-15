@@ -144,9 +144,9 @@ const Signup: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-full max-w-md mx-auto lg:mx-0">
-          <div className="bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-white/30 shadow-2xl">
-            <div className="text-center mb-8">
+        <div className="w-full max-w-md mx-auto lg:mx-0 ">
+          <div className="bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-white/30 shadow-2xl ">
+            <div className="text-center mb-8 ">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-600 rounded-2xl mb-4">
                 <UserCheckIcon className="w-8 h-8 text-white" />
               </div>
@@ -171,7 +171,7 @@ const Signup: React.FC = () => {
               onSubmit={handleSubmit}
             >
               {({ values, isSubmitting }) => (
-                <Form className="space-y-5">
+                <Form className="space-y-5 h-[14rem] overflow-y-scroll px-1 ">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                       <UserIcon className="w-4 h-4" />
@@ -329,7 +329,7 @@ const Signup: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting || isLoading}
-                    className="w-full bg-gradient-to-r cursor-pointer from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full bg-gradient-to-r cursor-pointer from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.01] hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isLoading ? (
                       <>

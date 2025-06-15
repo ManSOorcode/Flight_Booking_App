@@ -17,7 +17,7 @@ function App() {
         draggable
         pauseOnHover
         theme="light"
-        className="mt-16"
+        className="mt-16 z-2"
         toastClassName="backdrop-blur-md bg-white/90 border border-white/30"
       />
     </>

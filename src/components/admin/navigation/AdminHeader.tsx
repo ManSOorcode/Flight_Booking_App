@@ -3,7 +3,7 @@ import {
   BellIcon,
   LogOutIcon,
   MenuIcon,
-  SearchIcon,
+  // SearchIcon,
 } from "../../../assets/icons/Icons";
 
 const AdminHeader = ({ onMenuClick }: { onMenuClick: () => void }) => {
@@ -16,7 +16,7 @@ const AdminHeader = ({ onMenuClick }: { onMenuClick: () => void }) => {
   const user = JSON.parse(localStorage.getItem("currentUser") || "{}");
 
   return (
-    <header className="bg-white container shadow-sm border-b border-gray-200 px-6 py-4">
+    <header className="bg-white  shadow-sm border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <button
@@ -36,7 +36,7 @@ const AdminHeader = ({ onMenuClick }: { onMenuClick: () => void }) => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <div className="hidden sm:block">
+          {/* <div className="hidden sm:block">
             <div className="relative">
               <input
                 type="text"
@@ -47,9 +47,9 @@ const AdminHeader = ({ onMenuClick }: { onMenuClick: () => void }) => {
                 <SearchIcon />
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <button className="relative p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+          <button className="hidden md:block relative p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200">
             <BellIcon />
             <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
               <span className="text-xs text-white font-medium">3</span>
@@ -57,17 +57,17 @@ const AdminHeader = ({ onMenuClick }: { onMenuClick: () => void }) => {
           </button>
 
           <div className="flex items-center space-x-3 pl-4 border-l border-gray-200">
-            <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
+            <div className="flex w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full  items-center justify-center">
               <span className="text-sm font-medium text-white">
                 {(user?.name || "A").charAt(0).toUpperCase()}
               </span>
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center space-x-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-200 text-sm font-medium"
+              className="flex items-center space-x-2 bg-red-500 text-white px-4 py-2 cursor-pointer rounded-lg hover:bg-red-600 transition-colors duration-200 text-sm font-medium"
             >
-              <LogOutIcon />
-              <span>Logout</span>
+              <LogOutIcon className="w-4 h-4 md:w-5 md:h-5" />
+              <span className="hidden md:flex">Logout</span>
             </button>
           </div>
         </div>
