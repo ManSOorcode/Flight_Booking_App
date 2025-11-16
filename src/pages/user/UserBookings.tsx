@@ -10,10 +10,13 @@ import {
   UserIcon,
 } from "../../assets/icons/Icons";
 import type { Booking } from "../../types/bookingTypes";
+import { useNavigate } from "react-router";
 
 const UserBookings = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [cancellingId, setCancellingId] = useState<string | null>(null);
+
+  const navigate = useNavigate();
 
   const fetchUserBookings = () => {
     const all = JSON.parse(localStorage.getItem("bookings") || "[]");
@@ -75,6 +78,10 @@ const UserBookings = () => {
     return colors[airline] || "from-gray-500 to-gray-600";
   };
 
+  const handleNvaigate = () => {
+    navigate("/");
+  };
+
   if (bookings.length === 0) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
@@ -89,7 +96,10 @@ const UserBookings = () => {
             <p className="text-gray-600 text-lg mb-8">
               You haven't booked any flights yet. Start exploring destinations!
             </p>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+            <button
+              onClick={handleNvaigate}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+            >
               Book Your First Flight
             </button>
           </div>

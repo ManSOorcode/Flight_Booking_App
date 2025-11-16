@@ -118,7 +118,7 @@ const UserHomePage: React.FC = () => {
 
         return matchFrom && matchTo && matchDirect;
       });
-
+      console.log(filtered, "filter data");
       setFilteredFlights(filtered);
     } catch (error) {
       console.error("Failed to load or filter flights:", error);
